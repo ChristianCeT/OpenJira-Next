@@ -1,0 +1,62 @@
+import { UIContext } from "@/context/ui";
+import { Entry } from "@/interfaces";
+import { dateFunctions } from "@/utils";
+import {
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  Typography,
+} from "@mui/material";
+import { useRouter } from "next/router";
+import React, { FC, DragEvent, useContext } from "react";
+
+interface Props {
+  entry: Entry;
+}
+
+export const EntryCard: FC<Props> = ({ entry }) => {
+  const { startDragging, endDragging } = useContext(UIContext);
+
+  const router = useRouter();
+
+  const onDragStart = (event: DragEvent) => {
+    event.dataTransfer.setData("text", entry._id);
+    startDragging();
+  };
+  const onDragEnd = () => {
+    endDragging();
+  };
+
+  const onClick = () => {
+    router.push(`/entries/${entry._id}`);
+  };
+
+  return (
+    //:Recomendacion https://www.npmjs.com/package/react-beautiful-dnd
+    <Card
+      onClick={onClick}
+      sx={{ marginBottom: 1 }}
+      //eventos de drag
+      draggable
+      onDragStart={onDragStart}
+      onDragEnd={onDragEnd}
+    >
+      <CardActionArea>
+        <CardContent>
+          {/* whitespace se muestra el salto de linea */}
+          <Typography sx={{ whiteSpace: "pre-line" }}>
+            {entry.description}
+          </Typography>
+        </CardContent>
+        <CardActions
+          sx={{ display: "flex", justifyContent: "end", paddingRight: 2 }}
+        >
+          <Typography variant="body2">
+            {dateFunctions.getFormantDistanceToNow(entry.createdAt)}
+          </Typography>
+        </CardActions>
+      </CardActionArea>
+    </Card>
+  );
+};

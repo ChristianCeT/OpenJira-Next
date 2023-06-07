@@ -1,0 +1,9 @@
+# servicios que uso
+services:
+  entriesdb:
+    image: mongo:5.0.0
+    container_name: entries-database
+    ports:
+      - 27017:27017 #puerto de la imagen con el de la computadora física
+    volumes:
+      - ./mongo:/data/db #volumen para guardar los datos de la base de datos 
