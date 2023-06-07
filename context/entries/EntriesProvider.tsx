@@ -3,7 +3,7 @@ import { FC, useEffect, useReducer } from "react";
 import { Entry } from "@/interfaces";
 import { EntriesContext, entriesReducer } from "./";
 
-import { entriesApi } from "@/axiosApi";
+import { entriesApi } from "@/apis";
 import { useSnackbar } from "notistack";
 
 export interface EntriesState {
