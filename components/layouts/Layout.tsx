@@ -9,6 +9,7 @@ interface Props {
 }
 
 export const Layout: FC<Props> = ({ title = "OpenJira - App", children }) => {
+export const dynamic = 'force-dynamic'
   return (
     /* sx: style but it's acces to themeProvider */
     <Box sx={{ flexFlow: 1 }}>
