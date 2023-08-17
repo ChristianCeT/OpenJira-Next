@@ -8,8 +8,9 @@ interface Props {
   children: React.ReactNode;
 }
 
+export const dynamic = 'force-dynamic'
+
 export const Layout: FC<Props> = ({ title = "OpenJira - App", children }) => {
-export const revalidate = 0
   return (
     /* sx: style but it's acces to themeProvider */
     <Box sx={{ flexFlow: 1 }}>
