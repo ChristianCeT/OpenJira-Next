@@ -5,6 +5,9 @@ import { Card, CardHeader, Grid } from "@mui/material";
 import { EntryList, NewEntry } from "@/components/ui";
 
 const HomePage: NextPage = () => {
+
+  export const dynamic = 'force-dynamic'
+  
   return (
     <Layout title="Home - Open Jira">
       <Grid container spacing={2}>
